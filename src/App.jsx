@@ -9,7 +9,6 @@ import TopBar from "./components/TopBar";
 import SideBar from "./components/SidrBar";
 import { getDesignTokens } from "./theme";
 
-
 const DrawerHeader = styled("div")(({ theme }) => ({
   display: "flex",
   alignItems: "center",
@@ -19,9 +18,7 @@ const DrawerHeader = styled("div")(({ theme }) => ({
   ...theme.mixins.toolbar,
 }));
 
-
 export default function MiniDrawer() {
-
   const [open, setOpen] = React.useState(false);
 
   const handleDrawerOpen = () => {
@@ -32,7 +29,11 @@ export default function MiniDrawer() {
     setOpen(false);
   };
 
-  const [mode, setMode] = React.useState ("dark");
+  const [mode, setMode] = React.useState(
+    localStorage.getItem("currentMode")
+      ? localStorage.getItem("currentMode")
+      : "dark"
+  );
   const theme = React.useMemo(() => createTheme(getDesignTokens(mode)), [mode]);
   return (
     <ThemeProvider theme={theme}>

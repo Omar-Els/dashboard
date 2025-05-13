@@ -1,9 +1,19 @@
-import { alpha, Box, IconButton, InputBase, Stack, styled, Toolbar, Typography, useTheme } from '@mui/material'
-import React from 'react'
+import {
+  alpha,
+  Box,
+  IconButton,
+  InputBase,
+  Stack,
+  styled,
+  Toolbar,
+  Typography,
+  useTheme,
+} from "@mui/material";
+import React from "react";
 import MuiAppBar from "@mui/material/AppBar";
 import MenuIcon from "@mui/icons-material/Menu";
 import SearchIcon from "@mui/icons-material/Search";
-import { Delete } from '@mui/icons-material';
+import { Delete } from "@mui/icons-material";
 import Person2OutlinedIcon from "@mui/icons-material/Person2Outlined";
 import NotificationsOutlinedIcon from "@mui/icons-material/NotificationsOutlined";
 import SettingsOutlinedIcon from "@mui/icons-material/SettingsOutlined";
@@ -34,7 +44,6 @@ const AppBar = styled(MuiAppBar, {
     },
   ],
 }));
-
 
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
@@ -114,6 +123,10 @@ const TopBar = ({ open, handleDrawerOpen, setMode }) => {
           {theme.palette.mode === "light" ? (
             <IconButton
               onClick={() => {
+                localStorage.setItem(
+                  "currentMode",
+                  theme.palette.mode === "light" ? "dark" : "light"
+                );
                 setMode((prevMode) =>
                   prevMode === "light" ? "dark" : "light"
                 );
@@ -125,6 +138,10 @@ const TopBar = ({ open, handleDrawerOpen, setMode }) => {
           ) : (
             <IconButton
               onClick={() => {
+                localStorage.setItem(
+                  "currentMode",
+                  theme.palette.mode === "light" ? "dark" : "light"
+                );
                 setMode((prevMode) =>
                   prevMode === "light" ? "dark" : "light"
                 );
@@ -152,4 +169,4 @@ const TopBar = ({ open, handleDrawerOpen, setMode }) => {
   );
 };
 
-export default TopBar
+export default TopBar;
